@@ -74,15 +74,20 @@ def main():
     if button:
         # user_prompt = st.text_input("Enter your prompt for GPT-3.5")
         st.session_state.full_prompt = str(st.session_state.expenses_json) + "what is the total expense"
-        st.session_state.gpt3_response = call_gpt3(st.session_state.full_prompt)
+        gpt3_response = call_gpt3(st.session_state.full_prompt)
         # print(gpt3_response)
-        st.session_state.gpt3_response
+        st.write(gpt3_response)
+        if st.button("dismiss"):
+
+
+            # st.session_state.gpt3_response = str(gpt3_response)
+        # st.session_state.gpt3_response
         # if 'gpt3_response' not in st.session_state:
         # st.session_state.gpt3_response = str(gpt3_response)
         # st.text_area("GPT-3.5 Response",st.session_state.gpt3_response, height=300)
-    st.write(st.session_state.full_prompt)
+            st.write(st.session_state.full_prompt)
     st.write(st.session_state.expenses_json)
-    st.session_state.gpt3_response
+    # st.session_state.gpt3_response
 
 
 
