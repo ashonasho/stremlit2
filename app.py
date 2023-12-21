@@ -24,7 +24,7 @@ def call_gpt3(prompt):
                         {"role": "user", "content": str(prompt)}
                     ]
         )
-        return response['choices'][0]['message']['content']
+        return response['choices'][0].message.content
     except Exception as e:
         return str(e)
 
