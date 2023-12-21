@@ -17,14 +17,14 @@ def call_gpt3(prompt):
     client = OpenAI()
 
 
-    prompt
+    # prompt
 
     # t
     response = client.completions.create(
     model="gpt-3.5-turbo-instruct",
     prompt=prompt
     )
-    response
+    # response
     # response1 = response["choices"][0]["text"]
     st.write(response.choices[0].text)
     
