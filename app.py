@@ -73,6 +73,8 @@ def main():
         # gpt3_response = call_gpt3(full_prompt)
         st.text_area("GPT-3.5 Response",st.session_state.full_prompt, height=300)
     st.write(st.session_state.full_prompt)
+    st.write(st.session_state.expenses_json)
+
 
 
     # Input form for new expenses
