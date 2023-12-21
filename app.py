@@ -1,7 +1,7 @@
 import streamlit as st
 import json
 import os
-# import openai
+import openai
 from openai import OpenAI
 
 # Function to load and return expenses as a JSON string
