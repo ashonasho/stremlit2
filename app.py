@@ -78,12 +78,13 @@ def main():
         st.session_state.full_prompt = str(st.session_state.expenses_json) + "\n\n" + "what is the total expense"
         st.session_state.gpt3_response = call_gpt3(st.session_state.full_prompt)
         # print(gpt3_response)
+        st.session_state.gpt3_response
         # if 'gpt3_response' not in st.session_state:
         # st.session_state.gpt3_response = str(gpt3_response)
-        st.text_area("GPT-3.5 Response",st.session_state.gpt3_response, height=300)
+        # st.text_area("GPT-3.5 Response",st.session_state.gpt3_response, height=300)
     st.write(st.session_state.full_prompt)
     st.write(st.session_state.expenses_json)
-    st.text_area("GPT-3.5 Resse",st.session_state.gpt3_response, height=300)
+    st.session_state.gpt3_response
 
 
 
