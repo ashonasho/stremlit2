@@ -25,9 +25,7 @@ def call_gpt3(prompt):
     prompt=prompt,
     max_tokens = 1000
     )
-    # response
-    # response1 = response["choices"][0]["text"]
-    # st.write(response.choices[0].text)
+   
     return response.choices[0].text
     
     
@@ -70,8 +68,8 @@ def main():
         gpt3_response = call_gpt3(full_prompt)
         # print(gpt3_response)
         st.write(gpt3_response)
-        if st.button("dismiss"):
-            st.write(gpt3_response)
+        # if st.button("dismiss"):
+        #     st.write(gpt3_response)
 
 
 
