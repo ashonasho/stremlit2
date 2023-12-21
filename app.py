@@ -59,7 +59,7 @@ def main():
 
     if 'expenses_json' not in st.session_state:
         file_name = "expenses.json"
-        st.session_state.full_prompt = str(load_expenses_as_json(file_name))
+        st.session_state.expenses_json = str(load_expenses_as_json(file_name))
     st.title("Expense Tracker")
 
     # Load existing expenses
