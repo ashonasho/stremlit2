@@ -1,7 +1,7 @@
 import streamlit as st
 import json
 import os
-import openai
+# import openai
 from openai import OpenAI
 
 # Function to load and return expenses as a JSON string
@@ -21,9 +21,8 @@ def call_gpt3(prompt):
             model="gpt-3.5-turbo",  # or another GPT-3.5 model
             messages=[
                          {"role": "system", "content": "You are a helpful assistant in providing insights from expenses data given bellow in json."},
-                        {"role": "user", "content": str(prompt)},
-                    ],
-            max_tokens=150
+                        {"role": "user", "content": str(prompt)}
+                    ]
         )
         return response['choices'][0]['message']['content']
     except Exception as e:
@@ -61,7 +60,7 @@ def main():
     if 'full_prompt' not in st.session_state:
         st.session_state.full_prompt = ""
     if 'gpt3_response' not in st.session_state:
-        st.session_state.gpt3_response = "gpt3_response"
+        st.session_state.gpt3_response = ""
 
     if 'expenses_json' not in st.session_state:
         file_name = "expenses.json"
