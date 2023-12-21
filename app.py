@@ -76,4 +76,14 @@ def main():
 
     # Expenses display pannurathukku
     if expenses:
-        st.write
+        st.write("### Recorded Expenses")
+        for expense in expenses:
+            st.write(f"{expense['date']} - {expense['description']}: ${expense['amount']}")
+
+    # Expenses JSON ah download panna button
+    if st.button("Download Expenses as JSON"):
+        with open(file_name, "r") as file:
+            st.download_button(label="Download JSON", data=file, file_name="expenses.json", mime="application/json")
+
+if __name__ == "__main__":
+    main()
