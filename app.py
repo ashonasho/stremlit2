@@ -2,6 +2,7 @@ import streamlit as st
 import json
 import os
 import openai
+from openai import OpenAI
 
 # Function to load and return expenses as a JSON string
 def load_expenses_as_json(file_name):
@@ -13,9 +14,10 @@ def load_expenses_as_json(file_name):
 # Function to call OpenAI's GPT-3.5
 def call_gpt3(prompt):
     openai.api_key = os.environ['OPENAI_API_KEY']  # Replace with your actual API key
+    client = OpenAI()
 
     try:
-        response = openai.ChatCompletion.create(
+        response = client.chat.completions.create(
             model="gpt-3.5-turbo",  # or another GPT-3.5 model
             messages=[
                          {"role": "system", "content": "You are a helpful assistant in providing insights from expenses data given bellow in json."},
