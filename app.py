@@ -24,7 +24,8 @@ def call_gpt3(prompt):
     model="gpt-3.5-turbo-instruct",
     prompt="Write a tagline for an ice cream shop."
     )
-    return response['choices'][0]['text']
+    response1 = response['choices'][0]['text']
+    st.write(response1)
     
 # Main Streamlit application
 # def main():
