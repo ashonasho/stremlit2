@@ -8,13 +8,16 @@ from openai import OpenAI
 def load_expenses_as_json(file_name):
     if os.path.exists(file_name):
         with open(file_name, "r") as file:
-            return json.dumps(json.load(file))
+            return str(json.dumps(json.load(file)))
     return json.dumps([])
 
 # Function to call OpenAI's GPT-3.5
 def call_gpt3(prompt):
     openai.api_key = os.environ['OPENAI_API_KEY']  # Replace with your actual API key
     client = OpenAI()
+
+
+    prompt
 
     try:
         response = client.chat.completions.create(
@@ -75,7 +78,7 @@ def main():
     # full_prompt=" "
     if button:
         # user_prompt = st.text_input("Enter your prompt for GPT-3.5")
-        st.session_state.full_prompt = str(st.session_state.expenses_json) + "\n\n" + "what is the total expense"
+        st.session_state.full_prompt = str(st.session_state.expenses_json) + "what is the total expense"
         st.session_state.gpt3_response = call_gpt3(st.session_state.full_prompt)
         # print(gpt3_response)
         st.session_state.gpt3_response
