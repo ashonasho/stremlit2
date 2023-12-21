@@ -59,6 +59,7 @@ def main():
     file_name = "expenses.json"
     expenses_json = load_expenses_as_json(file_name)
     expenses = load_expenses(file_name)
+    full_prompt=" "
     if st.button("Send Data to GPT-3.5"):
         user_prompt = st.text_input("Enter your prompt for GPT-3.5")
         full_prompt = expenses_json + "\n\n" + user_prompt
@@ -92,5 +93,5 @@ def main():
             st.download_button(label="Download JSON", data=file, file_name="expenses.json", mime="application/json")
 
 if __name__ == "__main__":
-    full_prompt=" "
+    
     main()
