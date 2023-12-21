@@ -84,7 +84,7 @@ def main():
         st.text_area("GPT-3.5 Response",st.session_state.gpt3_response, height=300)
     st.write(st.session_state.full_prompt)
     st.write(st.session_state.expenses_json)
-    st.text_area("GPT-3.5 Response",st.session_state.gpt3_response, height=300)
+    st.text_area("GPT-3.5 Resse",st.session_state.gpt3_response, height=300)
 
 
 
