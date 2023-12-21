@@ -58,10 +58,12 @@ def main():
     file_name = "expenses.json"
     st.session_state.expenses_json = str(load_expenses_as_json(file_name))
     expenses = load_expenses(file_name)
+    user_prompt = st.text_input("Enter your prompt for GPT-3.5")
+    
     button = st.button("Send Data to GPT-3.5")
+
     # full_prompt=" "
     if button:
-        user_prompt = st.text_input("Enter your prompt for GPT-3.5")
         full_prompt = str(st.session_state.expenses_json) + user_prompt
         gpt3_response = call_gpt3(full_prompt)
         # print(gpt3_response)
