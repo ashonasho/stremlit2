@@ -22,25 +22,12 @@ def call_gpt3(prompt):
     # t
     response = client.completions.create(
     model="gpt-3.5-turbo-instruct",
-    prompt="Write a tagline for an ice cream shop."
+    prompt=prompt
     )
     response
     # response1 = response["choices"][0]["text"]
     st.write(response.choices[0].text)
     
-# Main Streamlit application
-# def main():
-#     st.title("Expense Tracker")
-
-#     # Load existing expenses
-#     file_name = "expenses.json"
-#     expenses_json = load_expenses_as_json(file_name)
-
-#     # Rest of your existing code...
-
-#     # Button for GPT-3.5 call
-    
-
     
 
 # Function to load expenses from a JSON file
@@ -82,13 +69,9 @@ def main():
         if st.button("dismiss"):
 
 
-            # st.session_state.gpt3_response = str(gpt3_response)
-        # st.session_state.gpt3_response
-        # if 'gpt3_response' not in st.session_state:
-        # st.session_state.gpt3_response = str(gpt3_response)
-        # st.text_area("GPT-3.5 Response",st.session_state.gpt3_response, height=300)
+        
             st.write(st.session_state.full_prompt)
-    st.write(st.session_state.expenses_json)
+            st.write(st.session_state.expenses_json)
     # st.session_state.gpt3_response
 
 
