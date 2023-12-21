@@ -25,8 +25,8 @@ def call_gpt3(prompt):
     prompt="Write a tagline for an ice cream shop."
     )
     response
-    response1 = response["choices"][0]["text"]
-    st.write(response1)
+    # response1 = response["choices"][0]["text"]
+    st.write(response.choices[0].text)
     
 # Main Streamlit application
 # def main():
