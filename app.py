@@ -53,6 +53,9 @@ def save_expenses(file_name, expenses):
 
 # Main Streamlit application
 def main():
+    if 'full_prompt' not in st.session_state:
+        st.session_state.full_prompt = ""
+
     st.title("Expense Tracker")
 
     # Load existing expenses
@@ -64,8 +67,8 @@ def main():
         user_prompt = st.text_input("Enter your prompt for GPT-3.5")
         full_prompt = expenses_json + "\n\n" + user_prompt
         # gpt3_response = call_gpt3(full_prompt)
-        st.text_area("GPT-3.5 Response",full_prompt, height=300)
-    st.write(full_prompt)
+        st.text_area("GPT-3.5 Response",st.session_state.full_prompt, height=300)
+    # st.write(full_prompt)
 
 
     # Input form for new expenses
