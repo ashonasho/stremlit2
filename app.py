@@ -1,6 +1,43 @@
 import streamlit as st
 import json
 import os
+import openai
+
+# Function to load and return expenses as a JSON string
+def load_expenses_as_json(file_name):
+    if os.path.exists(file_name):
+        with open(file_name, "r") as file:
+            return json.dumps(json.load(file))
+    return json.dumps([])
+
+# Function to call OpenAI's GPT-3.5
+def call_gpt3(prompt):
+    openai.api_key = 'YOUR_API_KEY'  # Replace with your actual API key
+
+    try:
+        response = openai.Completion.create(
+            model="text-davinci-003",  # or another GPT-3.5 model
+            prompt=prompt,
+            max_tokens=150
+        )
+        return response.choices[0].text.strip()
+    except Exception as e:
+        return str(e)
+
+# Main Streamlit application
+# def main():
+#     st.title("Expense Tracker")
+
+#     # Load existing expenses
+#     file_name = "expenses.json"
+#     expenses_json = load_expenses_as_json(file_name)
+
+#     # Rest of your existing code...
+
+#     # Button for GPT-3.5 call
+    
+
+    
 
 # Function to load expenses from a JSON file
 def load_expenses(file_name):
@@ -20,7 +57,15 @@ def main():
 
     # Load existing expenses
     file_name = "expenses.json"
+    expenses_json = load_expenses_as_json(file_name)
     expenses = load_expenses(file_name)
+    if st.button("Send Data to GPT-3.5"):
+        user_prompt = st.text_input("Enter your prompt for GPT-3.5")
+        full_prompt = expenses_json + "\n\n" + user_prompt
+        # gpt3_response = call_gpt3(full_prompt)
+        st.text_area("GPT-3.5 Response",full_prompt, height=300)
+
+
 
     # Input form for new expenses
     with st.form("expense_form", clear_on_submit=True):
@@ -28,6 +73,7 @@ def main():
         description = st.text_input("Description")
         amount = st.number_input("Amount", min_value=0.0, format="%f")
         submit_button = st.form_submit_button("Add Expense")
+
 
         # Add new expense to the list
         if submit_button:
