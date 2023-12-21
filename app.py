@@ -27,7 +27,8 @@ def call_gpt3(prompt):
     )
     # response
     # response1 = response["choices"][0]["text"]
-    st.write(response.choices[0].text)
+    # st.write(response.choices[0].text)
+    return response.choices[0].text
     
     
 
