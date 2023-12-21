@@ -25,7 +25,7 @@ def call_gpt3(prompt):
                     ],
             max_tokens=150
         )
-        return response['choices'][0]['message']['content'].strip()
+        return response['choices'][0]['message']['content']
     except Exception as e:
         return str(e)
 
@@ -78,7 +78,7 @@ def main():
         st.session_state.full_prompt = st.session_state.expenses_json + "\n\n" + user_prompt
         gpt3_response = call_gpt3(st.session_state.full_prompt)
         # if 'gpt3_response' not in st.session_state:
-        st.session_state.gpt3_response = gpt3_response
+        st.session_state.gpt3_response = str(gpt3_response)
         st.text_area("GPT-3.5 Response",st.session_state.gpt3_response, height=300)
     st.write(st.session_state.full_prompt)
     st.write(st.session_state.expenses_json)
