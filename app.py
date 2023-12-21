@@ -12,7 +12,7 @@ def load_expenses_as_json(file_name):
 
 # Function to call OpenAI's GPT-3.5
 def call_gpt3(prompt):
-    openai.api_key = 'YOUR_API_KEY'  # Replace with your actual API key
+    openai.api_key = os.environ['OPENAI_API_KEY']  # Replace with your actual API key
 
     try:
         response = openai.Completion.create(
