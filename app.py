@@ -22,7 +22,8 @@ def call_gpt3(prompt):
     # t
     response = client.completions.create(
     model="gpt-3.5-turbo-instruct",
-    prompt=prompt
+    prompt=prompt,
+    max_tokens = 1000
     )
     # response
     # response1 = response["choices"][0]["text"]
