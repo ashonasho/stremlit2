@@ -20,13 +20,10 @@ def call_gpt3(prompt):
     prompt
 
     # t
-    response = client.chat.completions.create(
-            model="gpt-3.5-turbo-1106",  # or another GPT-3.5 model
-            messages=[
-                         {"role": "system", "content": "You are a helpful assistant in providing insights from expenses data given bellow in json."},
-                        {"role": "user", "content": str(prompt)}
-                    ]
-        )
+    response = client.completions.create(
+    model="gpt-3.5-turbo-instruct",
+    prompt="Write a tagline for an ice cream shop."
+    )
     return response['choices'][0].message.content
     
 # Main Streamlit application
