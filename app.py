@@ -75,7 +75,7 @@ def main():
     button = st.button("Send Data to GPT-3.5")
     # full_prompt=" "
     if button:
-        user_prompt = st.text_input("Enter your prompt for GPT-3.5")
+        # user_prompt = st.text_input("Enter your prompt for GPT-3.5")
         st.session_state.full_prompt = str(st.session_state.expenses_json) + "\n\n" + "what is the total expense"
         st.session_state.gpt3_response = call_gpt3(st.session_state.full_prompt)
         # print(gpt3_response)
