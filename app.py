@@ -69,8 +69,10 @@ def main():
     # full_prompt=" "
     if st.button("Send Data to GPT-3.5"):
         user_prompt = st.text_input("Enter your prompt for GPT-3.5")
-        st.session_state.full_prompt = expenses_json + "\n\n" + user_prompt
-        # gpt3_response = call_gpt3(full_prompt)
+        st.session_state.full_prompt = st.session_state.expenses_json + "\n\n" + user_prompt
+        gpt3_response = call_gpt3(st.session_state.full_prompt)
+        if 'gpt3_response' not in st.session_state:
+            st.session_state.full_prompt = ""
         st.text_area("GPT-3.5 Response",st.session_state.full_prompt, height=300)
     st.write(st.session_state.full_prompt)
     st.write(st.session_state.expenses_json)
