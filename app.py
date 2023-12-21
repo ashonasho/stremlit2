@@ -70,16 +70,17 @@ def main():
 
     # Load existing expenses
     file_name = "expenses.json"
-    expenses_json = str(load_expenses_as_json(file_name))
+    st.session_state.expenses_json = str(load_expenses_as_json(file_name))
     expenses = load_expenses(file_name)
+    button = st.button("Send Data to GPT-3.5")
     # full_prompt=" "
-    if st.button("Send Data to GPT-3.5"):
+    if button:
         user_prompt = st.text_input("Enter your prompt for GPT-3.5")
         st.session_state.full_prompt = st.session_state.expenses_json + "\n\n" + user_prompt
         gpt3_response = call_gpt3(st.session_state.full_prompt)
         print(gpt3_response)
         # if 'gpt3_response' not in st.session_state:
-        st.session_state.gpt3_response = str(st.session_state.full_prompt)
+        st.session_state.gpt3_response = str(gpt3_response)
         st.text_area("GPT-3.5 Response",st.session_state.gpt3_response, height=300)
     st.write(st.session_state.full_prompt)
     st.write(st.session_state.expenses_json)
