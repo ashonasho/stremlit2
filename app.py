@@ -19,18 +19,16 @@ def call_gpt3(prompt):
 
     prompt
 
-    try:
-        response = client.chat.completions.create(
+    # t
+    response = client.chat.completions.create(
             model="gpt-3.5-turbo-1106",  # or another GPT-3.5 model
             messages=[
                          {"role": "system", "content": "You are a helpful assistant in providing insights from expenses data given bellow in json."},
                         {"role": "user", "content": str(prompt)}
                     ]
         )
-        return response['choices'][0].message.content
-    except Exception as e:
-        return str(e)
-
+    return response['choices'][0].message.content
+    
 # Main Streamlit application
 # def main():
 #     st.title("Expense Tracker")
