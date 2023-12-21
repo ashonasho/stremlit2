@@ -21,7 +21,7 @@ def call_gpt3(prompt):
             model="gpt-3.5-turbo",  # or another GPT-3.5 model
             messages=[
                          {"role": "system", "content": "You are a helpful assistant in providing insights from expenses data given bellow in json."},
-                        {"role": "user", "content": f"{prompt}"},
+                        {"role": "user", "content": str(prompt)},
                     ],
             max_tokens=150
         )
@@ -76,7 +76,7 @@ def main():
     # full_prompt=" "
     if button:
         user_prompt = st.text_input("Enter your prompt for GPT-3.5")
-        st.session_state.full_prompt = st.session_state.expenses_json + "\n\n" + user_prompt
+        st.session_state.full_prompt = str(st.session_state.expenses_json) + "\n\n" + "what is the total expense"
         gpt3_response = call_gpt3(st.session_state.full_prompt)
         print(gpt3_response)
         # if 'gpt3_response' not in st.session_state:
