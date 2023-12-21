@@ -56,11 +56,14 @@ def main():
     if 'full_prompt' not in st.session_state:
         st.session_state.full_prompt = ""
 
+
+    if 'expenses_json' not in st.session_state:
+        st.session_state.full_prompt = str(load_expenses_as_json(file_name))
     st.title("Expense Tracker")
 
     # Load existing expenses
     file_name = "expenses.json"
-    expenses_json = load_expenses_as_json(file_name)
+    expenses_json = str(load_expenses_as_json(file_name))
     expenses = load_expenses(file_name)
     # full_prompt=" "
     if st.button("Send Data to GPT-3.5"):
