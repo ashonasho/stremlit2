@@ -15,12 +15,15 @@ def call_gpt3(prompt):
     openai.api_key = os.environ['OPENAI_API_KEY']  # Replace with your actual API key
 
     try:
-        response = openai.Completion.create(
-            model="text-davinci-003",  # or another GPT-3.5 model
-            prompt=prompt,
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",  # or another GPT-3.5 model
+            messages=[
+                         {"role": "system", "content": "You are a helpful assistant in providing insights from expenses data given bellow in json."},
+                        {"role": "user", "content": f"{prompt}"},
+                    ],
             max_tokens=150
         )
-        return response.choices[0].text.strip()
+        return response['choices'][0]['message']['content'].strip()
     except Exception as e:
         return str(e)
 
